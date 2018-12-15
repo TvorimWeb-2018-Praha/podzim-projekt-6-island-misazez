@@ -20,24 +20,297 @@ body {
 
 /* HLAVICKA */
 
-.titulek {
-    font-family: 'Raleway', serif;
+.hlavicka {
+  background: rgb(130, 149, 190) url('images/island-hlavicka.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  padding: 10px 20px;
+	position: relative;
+	align-items: center;
 }
 
+.perex {
+	padding: 0 20%;
+}
+
+.autor {
+	font-style: italic;
+	font-size: 14px;
+}
+.autor:before {
+	position: absolute;
+	content: "";
+	height: 1px;
+	background-color: rgb(255, 255, 255);
+	width: 50px;
+	left: 48%;
+	top: -5px;
+}
+.titulek {
+	font-family: 'Raleway', serif;
+	font-size: 400%;
+	margin-bottom: 20px;
+}
+
+/**** zatmaveni pozadi hlavicky ****/
+.hlavicka::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.hlavicka .titulek, .perex, .autor {
+	position: relative;
+	z-index: 2;
+} 
+
+/********/
+
+.sloupec {
+	background-color: white;
+	width: 100%;
+	padding-top: 10px;
+	box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
+}
 
 /* MENU */
 
+.menu {
+	font-family: 'Raleway', serif;
+	list-style: none;
+	text-align: center;
+	padding: 20px 0 0 0;
+	margin: 0 40px 30px 40px;
+}
 
+.menu li {
+	font-size: 14px;
+	padding: 5px;
+	border-bottom: 1px solid lightgray;
+}
 
+.menu a {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: gray;
+	padding: 5px;
+}
+
+.menu a:hover {
+	color: darkgray;
+}
 
 /* OBSAH */
 
+h2 {
+	font-family: 'Raleway', serif;
+	font-size: 200%;
+}
 
+/**** cary pod nadpisy ****/
+h2 {
+	position: relative;
+	margin: 10px 0;
+	padding: 10px 20px 20px 20px;
+}
 
+h2:after {
+	position: absolute;
+	content: "";
+	height: 4px;
+	background-color: rgb(142, 134, 255);
+	width: 15%;
+	top: 100%;
+	left: 0;
+}
+/********/
+
+.obsah .text {
+	padding: 10px 20px 20px 20px;
+}
+ 
+.obsah img {
+	width: 100%;
+}
+
+.popisek {
+	font-family: 'Raleway', serif;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 1.2;
+	color: gray;
+	text-align: center;
+	margin: 0 auto;
+	padding: 10px 0 20px 0;
+}
+
+.popisek a {
+	color: gray;
+}
 
 /* FOTOGALERIE */
 
+.galerie {
+	margin-top: 40px;
+}
 
+.galerie img {
+	width: 100%;
+	display: block;
+}
 
+.popisek-copy {
+	font-weight: normal;
+	font-size: 12px;
+}
 
 /* PATICKA */
+
+.paticka {
+	color: gray;
+	font-size: 12px;
+	padding: 20px;
+}
+
+.paticka a {
+	color: gray;
+}
+
+@media (min-width: 500px) {
+  .menu {
+       display: flex;
+			 border-top: 1px solid lightgray;
+       border-bottom: 1px solid lightgray;
+       margin: 20px 20px 30px 20px;
+      padding-top: 0;
+    }
+
+   .menu li {
+       border-bottom: none;
+       flex: 1 1 auto;
+       font-size: 12px;
+   }
+
+    .menu li:not(:last-child) {
+        border-right: 1px solid lightgray;
+    }
+
+    .obsah .foto {
+        position: relative;
+    }
+    
+    .obsah .popisek {
+        position: absolute;
+        bottom: 20px;
+        right: 30px;
+        padding: 0;
+    }
+
+    .popisek, .popisek a {
+        color: white;
+    }
+
+    .galerie {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .galerie .foto {
+        width: 50%;
+        height: 220px;  /* fotka se bude deformovat, nepodarilo se mi udelat animaci popisku pri menici se vysce fotky */
+        overflow: hidden;
+    }
+
+    .galerie .foto img {
+        width: 100%;
+        height: 220px; 
+    }
+
+    .galerie .popisek {
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 15px 0;
+        width: 100%;
+    }
+
+    .galerie .foto:hover img {
+        transform: scale(1.3);
+    }
+
+    .galerie .foto img {
+        transition: 0.5s ease-in-out;
+    }
+
+    .galerie .foto:hover .popisek {
+        transform: translate(0, -100%);
+    } 
+    
+    .galerie .popisek {
+        transition: 0.5s ease-in-out;
+    } 
+
+    @media (min-width: 1000px) {
+        .hlavicka {
+            padding-bottom: 100px;
+        }
+
+        .sloupec {
+            width: 960px;
+            margin: -100px auto 0 auto; 
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu {
+            flex-direction: column;
+            align-items: flex-start;
+            float: left;
+            padding: 15px;
+            border: none;
+        }
+
+        .menu li:not(:last-child) {
+            border-right: none;
+        }
+
+        .menu li {
+            border-bottom: 1px solid lightgray;
+            font-size: 14px;
+        }
+
+        .obsah .nalevo {
+            padding-right: 250px;
+        }
+
+        .obsah .napravo {
+            padding-left: 250px;
+        }
+
+        .obsah #videt h2 {
+            margin-left: 230px;
+            padding-left: 20px;
+        }
+
+        .galerie .foto {
+            width: calc(100%/3);
+            height: 180px;
+        }
+        
+        .galerie .foto img {
+            height: auto;
+        }
+
+        .paticka {
+            width: 960px;
+            margin: 0 auto;
+            padding-left: 0;
+        }
+    }   
+}
